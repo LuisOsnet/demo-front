@@ -40,19 +40,19 @@ class Signin extends React.Component {
 			}
 		).then(response => {
 			if (response.status === 200) {
-				console.log({ headers: response.headers });
-				
+				console.log({ headers: response.headers.authorization });
+				localStorage.setItem("token:", response.headers.authorization);
 			} else {
-				console.log(response.data);
+				console.log("response:" + response.data);
 					this.setState(
 						{
 							error: true,
-							errorMsg: response.status
+							errorMsg: response.data.error.message
 						}
 					)
 			}
 		}).catch((error) => {
-			console.log(error);
+			console.log("request:" + error.request);
 			this.setState(
 				{
 					error: true,
