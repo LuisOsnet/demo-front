@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './assets/css/App.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import Signin from './components/Signin'
 
 function App() {
