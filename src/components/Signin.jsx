@@ -5,9 +5,9 @@ import { hostUrl } from '../services/apirest';
 import axios from "axios";
 
 class Signin extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+	// constructor(props) {
+	// 	super(props);
+	// }
 
 	state={
 		form:{
@@ -46,7 +46,7 @@ class Signin extends React.Component {
 			if (response.status === 200) {
 				console.log({ headers: response.headers.authorization });
 				localStorage.setItem("session", response.headers.authorization);
-				this.props.history.push('/dashboard');
+				this.props.history.push('/usuarios');
 				window.location.reload(false);
 			} else {
 				console.log("response:" + response.data);

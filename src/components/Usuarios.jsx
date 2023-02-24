@@ -3,7 +3,7 @@ import Header from '../template/Header';
 import { hostUrl } from '../services/apirest';
 import axios from "axios";
 
-class Dashboard extends React.Component {
+class Usuarios extends React.Component {
 	state={
 		users:[]
 	}
@@ -22,6 +22,12 @@ class Dashboard extends React.Component {
 				users: response.data.users
 			})
 		})
+	}
+
+	clickOnUser(id) {
+		console.log(id);
+		this.props.history.push('/usuarios/' + id + '/editar');
+		window.location.reload(false);
 	}
 
 	render() {
@@ -45,9 +51,8 @@ class Dashboard extends React.Component {
 						</thead>
 						<tbody>
 							{this.state.users.map((value, index ) => {
-								console.log(value.resume_url)
 								return(
-									<tr key="index">
+									<tr key={index} onClick={()=>this.clickOnUser(value.id)}>
 										<td>{ value.name }</td>
 										<td>{ value.email }</td>
 										<td>{ value.level_english }</td>
@@ -58,13 +63,10 @@ class Dashboard extends React.Component {
 							})}
 						</tbody>
 					</table>
-
-					
 				</div>
-				
 			</React.Fragment>
 		);
 	}
 }
 
-export default Dashboard;
+export default Usuarios;
