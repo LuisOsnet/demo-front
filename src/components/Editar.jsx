@@ -26,9 +26,9 @@ class Editar extends React.Component {
 		})
 	}
 
-	updateButton = async e=> {
+	update = async e=> {
 		let user_id = this.props.match.params.id;
-		let url = hostUrl + '/api/v1/users/' + user_id;
+		let url = hostUrl + 'api/v1/users/' + user_id;
 
 
 		axios.put(url, this.state.form, {
@@ -41,9 +41,23 @@ class Editar extends React.Component {
 		})
 	}
 
+	delete = async e=> {
+		let user_id = this.props.match.params.id;
+		let url = hostUrl + 'api/v1/users/' + user_id;
+
+		axios.delete(url, {
+			headers: {
+				'Authorization': `${localStorage.getItem("session")}`
+			}
+		})
+		.then(response =>{
+			console.log(response)
+		})
+	}
+
 	componentDidMount(){
 		let user_id = this.props.match.params.id;
-		let url = hostUrl + '/api/v1/users/' + user_id;
+		let url = hostUrl + 'api/v1/users/' + user_id;
 		axios.get(url, {
 			headers: {
 				'Authorization': `${localStorage.getItem("session")}`
@@ -114,7 +128,10 @@ class Editar extends React.Component {
 								</div>
 							</div>
 						</div>
-						<button type="button" className="btn btn-outline-primary" onClick={()=>this.updateButton()}>Actualizar</button>
+						<button type="button" className="btn btn-outline-primary" onClick={()=>this.update()}>Actualizar</button>
+
+						<button type="button" class="btn btn-outline-danger" onClick={()=>this.delete()}>Eliminar</button>
+						<button type="button" class="btn btn-outline-secondary">Salir</button>
 					</form>
 				</div>
 			</React.Fragment>

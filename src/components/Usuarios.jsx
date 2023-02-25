@@ -9,7 +9,7 @@ class Usuarios extends React.Component {
 	}
 
 	componentDidMount() {
-		let url = hostUrl + '/api/v1/users';
+		let url = hostUrl + 'api/v1/users';
 		
 		axios.get(url, {
 			headers: {
