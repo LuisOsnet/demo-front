@@ -1,0 +1,7 @@
+.button-container {
+  text-align: right;
+}
+
+.button-container > button {
+  margin: 0.5em;
+}

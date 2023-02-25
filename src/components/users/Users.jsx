@@ -26,7 +26,7 @@ class Users extends React.Component {
 
 	clickOnUser(id) {
 		console.log(id);
-		this.props.history.push('/usuarios/' + id + '/editar');
+		this.props.history.push('/usuario/' + id);
 		window.location.reload(false);
 	}
 
