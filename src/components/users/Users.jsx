@@ -37,6 +37,10 @@ class Users extends React.Component {
         <section className="section_gap features_area">
           <div className="container">
             <div className="row justify-content-center">
+              <div className='button-container'>
+                <a type="button" className="btn btn-success" href="/nuevo-usuario" role="button">Crear Usuario</a>
+                <br/>
+              </div>
               <table className="table table-hover">
                 <thead>
                   <tr>

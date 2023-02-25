@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Landing from "./components/landing/Landing";
 import Login from "./components/login/Login";
 import Users from "./components/users/Users";
+import User from "./components/users/User";
+import New from "./components/users/New";
 
 function App() {
   return (
@@ -18,8 +20,9 @@ function App() {
           <Switch>
             <Route path="/" exact render ={ props=> ( <Landing {...props} /> ) }></Route>
             <Route path="/login" exact render ={ props=> ( <Login {...props} /> ) }></Route>
-            <Route path="/Usuarios" exact render ={ props=> ( <Users {...props} /> ) }></Route>
-            {/* <Route path="/Usuarios/:id/editar" exact render ={ props=> ( <Editar {...props} /> ) }></Route> */}
+            <Route path="/usuarios" exact render ={ props=> ( <Users {...props} /> ) }></Route>
+            <Route path="/usuario/:id" exact render ={ props=> ( <User {...props} /> ) }></Route>
+            <Route path="/nuevo-usuario" exact render ={ props=> ( <New {...props} /> ) }></Route>
           </Switch>
         </Router>
       </header>
