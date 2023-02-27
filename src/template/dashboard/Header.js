@@ -21,7 +21,7 @@ class Header extends React.Component {
                   <a className="nav-link" href="/equipos">Equipos</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link disabled" href="/movimientos">Movimientos</a>
+                  <a className="nav-link" href="/movimientos">Movimientos</a>
                 </li>
               </ul>
             </div>

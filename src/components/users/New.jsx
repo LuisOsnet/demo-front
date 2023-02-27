@@ -62,7 +62,6 @@ class New extends React.Component {
   }
 
   render() {
-    const form = this.state.form
     return (
       <React.Fragment>
         <Header></Header>

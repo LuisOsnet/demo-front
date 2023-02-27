@@ -16,6 +16,16 @@ import Accounts from "./components/accounts/Accounts";
 import Account from "./components/accounts/Account";
 import NewAccount from "./components/accounts/New";
 
+// teams
+import Teams from "./components/teams/Teams";
+import Team from "./components/teams/Team";
+import NewTeam from "./components/teams/New";
+import AssignUser from "./components/teams/Assign";
+
+// Movements
+import Movements from "./components/movements/Movements";
+
+
 function App() {
   return (
     <div className="App">
@@ -31,6 +41,13 @@ function App() {
             <Route path="/cuentas" exact render ={ props=> ( <Accounts {...props} /> ) }></Route>
             <Route path="/cuenta/:id" exact render ={ props=> ( <Account {...props} /> ) }></Route>
             <Route path="/nueva-cuenta" exact render ={ props=> ( <NewAccount {...props} /> ) }></Route>
+
+            <Route path="/equipos" exact render ={ props=> ( <Teams {...props} /> ) }></Route>
+            <Route path="/equipo/:id" exact render ={ props=> ( <Team {...props} /> ) }></Route>
+            <Route path="/nuevo-equipo" exact render ={ props=> ( <NewTeam {...props} /> ) }></Route>
+            <Route path="/asignar-usuario" exact render ={ props=> ( <AssignUser {...props} /> ) }></Route>
+
+            <Route path="/movimientos" exact render ={ props=> ( <Movements {...props} /> ) }></Route>
           </Switch>
         </Router>
       </header>

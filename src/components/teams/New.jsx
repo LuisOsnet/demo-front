@@ -3,12 +3,11 @@ import Header from '../../template/dashboard/Header';
 import { hostUrl } from '../../services/apirest';
 import axios from "axios";
 
-class NewAccount extends React.Component {
+class New extends React.Component {
   state= {
 		form: {
 			"name": "",
-			"client_name": "",
-			"owner": ""
+			"account_id": ""
 		},
 		error: false,
 		errorMsg: ""
@@ -28,7 +27,7 @@ class NewAccount extends React.Component {
 	}
 
 	post=()=> {
-		let url = hostUrl + 'api/v1/accounts/'
+		let url = hostUrl + 'api/v1/teams/'
 
 		axios.post(url, this.state.form, {
 			headers: {
@@ -37,7 +36,7 @@ class NewAccount extends React.Component {
 		})
 		.then(response =>{
 			console.log(response)
-      this.props.history.push('/cuentas');
+      this.props.history.push('/equipos');
       window.location.reload(false);
 		})
 	}
@@ -53,17 +52,12 @@ class NewAccount extends React.Component {
                 <div className="row g-3">
                   <div className="col-sm">
                     <div className="form-outline">
-                      <input type="text" className="form-control" name="name" placeholder='Nombre de la cuenta' onChange={this.ctrlChange}/>
+                      <input type="text" className="form-control" name="name" placeholder='Nombre del equipo' onChange={this.ctrlChange}/>
                     </div>
                   </div>
                   <div className="col-sm">
                     <div className="form-outline">
-                      <input type="text" className="form-control" name="client_name" placeholder='Nombre del Cliente' onChange={this.ctrlChange}/>
-                    </div>
-                  </div>
-                  <div className="col-sm">
-                    <div className="form-outline">
-                      <input type="text" className="form-control" name="owner"placeholder='Responsable' onChange={this.ctrlChange}/>
+                      <input type="text" className="form-control" name="account_id" placeholder='Id de la cuenta' onChange={this.ctrlChange}/>
                     </div>
                   </div>
                 </div>
@@ -81,4 +75,4 @@ class NewAccount extends React.Component {
   }
 }
 
-export default NewAccount
+export default New
