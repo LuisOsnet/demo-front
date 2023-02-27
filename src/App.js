@@ -21,6 +21,7 @@ import Teams from "./components/teams/Teams";
 import Team from "./components/teams/Team";
 import NewTeam from "./components/teams/New";
 import AssignUser from "./components/teams/Assign";
+import RemoveUser from "./components/teams/Remove";
 
 // Movements
 import Movements from "./components/movements/Movements";
@@ -45,7 +46,8 @@ function App() {
             <Route path="/equipos" exact render ={ props=> ( <Teams {...props} /> ) }></Route>
             <Route path="/equipo/:id" exact render ={ props=> ( <Team {...props} /> ) }></Route>
             <Route path="/nuevo-equipo" exact render ={ props=> ( <NewTeam {...props} /> ) }></Route>
-            <Route path="/asignar-usuario" exact render ={ props=> ( <AssignUser {...props} /> ) }></Route>
+            <Route path="/equipo/:id/asignar" exact render ={ props=> ( <AssignUser {...props} /> ) }></Route>
+            <Route path="/equipo/:id/eliminar" exact render ={ props=> ( <RemoveUser {...props} /> ) }></Route>
 
             <Route path="/movimientos" exact render ={ props=> ( <Movements {...props} /> ) }></Route>
           </Switch>

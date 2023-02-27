@@ -34,7 +34,6 @@ class Team extends React.Component {
 			}
 		})
 		.then(response =>{
-			console.log(response)
       this.props.history.push('/equipos');
       window.location.reload(false);
 		})
@@ -50,10 +49,21 @@ class Team extends React.Component {
 			}
 		})
 		.then(response =>{
-			console.log(response)
       this.props.history.push('/equipos');
       window.location.reload(false);
 		})
+	}
+
+	clickToAssign(id) {
+		let team_id = this.props.match.params.id;
+		this.props.history.push(team_id + '/asignar/');
+		window.location.reload(false);
+	}
+
+	clickToRemove(id) {
+		let team_id = this.props.match.params.id;
+		this.props.history.push(team_id + '/eliminar/');
+		window.location.reload(false);
 	}
 
 	componentDidMount(){
@@ -65,7 +75,6 @@ class Team extends React.Component {
 			}
 		})
 		.then(response =>{
-      console.log(response.data.team.users)
 			this.setState({
 				form: {
 					name : response.data.team.name,
@@ -84,8 +93,8 @@ class Team extends React.Component {
           <div className="container">
             <div className="row justify-content-center">
 							<div className='button-container'>
-								<a type="button" className="btn btn-primary" role="button" >Asignar Usuario</a>
-								<a type="button" className="btn btn-warning" role="button" >Remover Usuario</a>
+								<a type="button" className="btn btn-primary" role="button" onClick={()=>this.clickToAssign()}>Agregar usuario</a>
+								<a type="button" className="btn btn-warning" role="button" onClick={()=>this.clickToRemove()}>Remover Usuario</a>
                 <br/>
               </div>
               <div className="row g-3">
@@ -117,15 +126,7 @@ class Team extends React.Component {
 								</div>
               </div>
             </div>
-						{/* <br/>
-						<h2>Usuarios en el grupo</h2>
-						<ul className="list-group list-group-flush col-sm">
-							<li className="list-group-item">Cras justo odio</li>
-							<li className="list-group-item">Dapibus ac facilisis in</li>
-							<li className="list-group-item">Morbi leo risus</li>
-							<li className="list-group-item">Porta ac consectetur ac</li>
-							<li className="list-group-item">Vestibulum at eros</li>
-						</ul> */}
+						<br/>
             <br/>
             <div className='button-container'>
               <button type="button" className="btn btn-success" onClick={()=>this.update()}>Actualizar</button>

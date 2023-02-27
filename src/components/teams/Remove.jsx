@@ -3,15 +3,14 @@ import Header from '../../template/dashboard/Header';
 import { hostUrl } from '../../services/apirest';
 import axios from "axios";
 
-class Assign extends React.Component {
+class Remove extends React.Component {
   state={
 		users:[]
 	}
 
 	componentDidMount() {
     let team_id = this.props.match.params.id;
-    console.log(team_id)
-		let url = hostUrl + 'api/v1/users';
+		let url = hostUrl + 'api/v1/teams/' + team_id;
 		
 		axios.get(url, {
 			headers: {
@@ -19,17 +18,15 @@ class Assign extends React.Component {
 			}
 		})
 		.then(response =>{
-			console.log(response.data.users)
 			this.setState({
-				users: response.data.users
+				users: response.data.team.users
 			})
 		})
 	}
 
 	clickOnUser(id) {
     let team_id = this.props.match.params.id;
-		let url = hostUrl + 'api/v1/teams/' + team_id + '/assign';
-		
+		let url = hostUrl + 'api/v1/teams/' + team_id + '/remove';
 		axios.post(
       url,
       {
@@ -44,7 +41,8 @@ class Assign extends React.Component {
 
 		})
 		.then(response =>{
-			this.props.history.push('/equipo/' + team_id);
+			console.log(response.data)
+      this.props.history.push('/equipo/' + team_id);
 			window.location.reload(false);
 		})
 	}
@@ -67,10 +65,10 @@ class Assign extends React.Component {
                   {this.state.users.map((value, index ) => {
                     return(
                       <tr key={index} onClick={()=>this.clickOnUser(value.id)}>
-                        <td>{ value.name }</td>
+                        <td>{ value.user }</td>
                         <td className='text-center'>
                           <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" className="btn btn-info">Asignar</button>
+                            <button type="button" className="btn btn-danger">Eliminar</button>
                           </div>
                         </td>
                       </tr>
@@ -86,4 +84,4 @@ class Assign extends React.Component {
   }
 }
 
-export default Assign
+export default Remove
