@@ -5,8 +5,8 @@ import logo from '../../assets/img/mind.png';
 class Header extends React.Component {
   render(){
     return(
-      <header class="header_area">
-        <div class="container">
+      <header className="header_area">
+        <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
               <a className="navbar-brand" href="/landing"><img src={logo} alt="Logo" /></a>
