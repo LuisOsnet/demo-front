@@ -69,7 +69,6 @@ class Profile extends React.Component {
         <Header></Header>
         <section className="section_gap features_area">
           <div className="container">
-            <h1>hola</h1>
             <div className="row justify-content-center">
               <div className="row g-3">
                 <div className="col-sm-7">
