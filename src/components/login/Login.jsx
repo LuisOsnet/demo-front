@@ -40,10 +40,17 @@ class Login extends React.Component {
 			}
 		).then(response => {
 			if (response.status === 200) {
-				console.log({ headers: response.headers.authorization });
+				console.log(response)
+				console.log(response.data.user.role)
 				localStorage.setItem("session", response.headers.authorization);
-				this.props.history.push('/usuarios');
-				window.location.reload(false);
+
+				if(response.data.user.role === 'user') {
+					this.props.history.push('/perfil/' + response.data.user.id);
+					window.location.reload(false);
+				} else {
+					this.props.history.push('/usuarios');
+					window.location.reload(false);
+				}
 			} else {
 				console.log("response:" + response.data);
 					this.setState(
