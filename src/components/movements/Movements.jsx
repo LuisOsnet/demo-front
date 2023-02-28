@@ -5,25 +5,86 @@ import axios from "axios";
 
 class Movements extends React.Component {
   state={
-		movements:[]
+		movements:[],
+    data:[],
+    form: {
+      key : "",
+      value: ""
+    }
+	}
+
+  handleSelectOption = async e=> {
+		await this.setState({
+			form:{
+				...this.state.form,
+				key: e.target.value
+			}
+		})
+	}
+
+  handleInputText = async e=> {
+		await this.setState({
+			form:{
+				...this.state.form,
+				value: e.target.value
+			}
+		})
+	}
+
+  ctrlSubmit(e) {
+		e.preventDefault();
+	}
+
+  get=(event)=> {
+    if(event.keyCode === 13) { 
+      let url = hostUrl + 'api/v1/tracks?' + this.state.form.key + '=' + this.state.form.value
+
+      axios.get(url, {
+          headers: {
+            'Authorization': `${localStorage.getItem("session")}`
+          }
+        }
+      )
+      .then(response =>{
+        this.setState({
+          movements: response.data.movements
+        })
+      })
+    }
 	}
 
 	componentDidMount() {
 		let url = hostUrl + 'api/v1/tracks';
-		console.log(url)
 		axios.get(url, {
 			headers: {
 				'Authorization': `${localStorage.getItem("session")}`
 			}
 		})
 		.then(response =>{
-			console.log(response.data.movements)
 			this.setState({
 				movements: response.data.movements
 			})
 		})
 	}
   render() {
+    const options = [
+      {
+        label: "Nombre de usuario",
+        value: "user_name",
+      },
+      {
+        label: "Nombre de equipo",
+        value: "team_name",
+      },
+      {
+        label: "Fecha de asignación",
+        value: "started_at",
+      },
+      {
+        label: "Fecha de termino",
+        value: "ended_at",
+      },
+    ];
     return (
       <React.Fragment>
         <Header></Header>
@@ -31,10 +92,20 @@ class Movements extends React.Component {
           <div className="container">
             <div className="row justify-content-center">
               <div className='button-container'>
-                <nav class="navbar navbar-light bg-light justify-content-between">
-                  <a class="navbar-brand"></a>
-                  <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="Buscar" placeholder="Buscar" aria-label="Buscar"/>
+                <nav className="navbar navbar-light bg-light justify-content-between">
+                  <a className="navbar-brand"></a>
+                  <form onSubmit={this.ctrlSubmit} className="form-inline">
+                    <div className="input-group">
+                      <select className="form-select" onChange={this.handleSelectOption}>
+                        <option selected >Filtrar por...</option>
+                        {options.map((option) => (
+                          <option value={option.value}>{option.label}</option>
+                        ))}
+                      </select>
+                      <div className="input-group-append">
+                        <input className="form-control mr-sm-2" type="Buscar" placeholder="Buscar" aria-label="Buscar" onChange={this.handleInputText} onKeyDown={this.get}/>
+                      </div>
+                    </div>
                   </form>
                 </nav>
                 <br/>
