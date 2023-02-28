@@ -3,7 +3,9 @@ Este proyecto consume un API construida con Ruby on Rails basada en este [repo](
 
 ![Kapture 2023-02-27 at 21 16 10](https://user-images.githubusercontent.com/47339360/221744790-32885b8d-c896-4efc-bec8-7dc0dce7a5e4.gif)
 
+# Live
 
+Puedes visualizar el proyecto en el siguiente [enlace](https://osnet-front.herokuapp.com)
 # Pre-requisitos
 
 Este proyecto requiere las siguientes librerias, asegurate de instalarlas previamente.
