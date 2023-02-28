@@ -1,0 +1,15 @@
+.navbar-brand > img {
+  width: 80px;
+}
+
+.home_banner_area .banner_inner .banner_content h2 {
+  margin-top: 0px;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 54px;
+  margin-bottom: 20px;
+}
+
+.launch {
+  width: 50%;
+}
