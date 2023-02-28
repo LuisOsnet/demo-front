@@ -1,8 +1,21 @@
 import React from 'react';
 import logo from '../../assets/img/mind.png';
-
+import { hostUrl } from '../../services/apirest';
+import axios from "axios";
 
 class Header extends React.Component {
+  delete = async e=> {
+		let url = hostUrl + 'api/v1/logout';
+
+		axios.delete(url, {
+			headers: {
+				'Authorization': `${localStorage.getItem("session")}`
+			}
+		})
+		.then(response =>{
+      window.location.href="/login";
+		})
+	}
   render(){
     return(
       <header className="header_area">
@@ -25,6 +38,7 @@ class Header extends React.Component {
                 </li>
               </ul>
             </div>
+            <button type="button" className="btn btn-info float-right" onClick={()=>this.delete()}>Salir</button>
           </nav>      
         </div>
       </header>
